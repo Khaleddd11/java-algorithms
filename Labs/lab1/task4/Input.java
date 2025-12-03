@@ -1,19 +1,11 @@
-import java.util.Scanner;
 class Input {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter something: ");
-
-    
-        String input = scanner.nextLine();
-
-          
-        System.out.println("You typed: " + input);
-
-      
-         scanner.close();
-        
+        // Check if the user provided at least one argument
+        if (args.length > 0) {
+            String input = args[0]; 
+            System.out.println("You typed: " + input);
+        } else {
+            System.out.println("Please provide an argument when running the program.");
+        }
     }
 }

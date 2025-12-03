@@ -1,25 +1,20 @@
-import java.util.Scanner;
-
 class RepeatInput {
-    public static void main(String[]args){
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter a text: ");
+    public static void main(String[] args) {
+        // We need 2 arguments: The text (1) and the number (2)
+        if (args.length >= 2) {
+            
+            String input = args[0]; // The text
+            
+            // CONVERSION: 
+            int num = Integer.parseInt(args[1]); 
 
-    
-        String input = scanner.nextLine();
+            for (int i = 0; i < num; i++) {
+                System.out.println(input);
+            }
 
-        System.out.println("enter a number: ");
-        int num = scanner.nextInt();
-        for ( int i =0 ; i< num ; i++){
-            System.out.println(input);
+        } else {
+            System.out.println("Error: Please provide TEXT then a NUMBER.");
+            System.out.println("Example: java RepeatInput Hello 5");
         }
-          
-    
-
-      
-         scanner.close();
-
     }
-
 }

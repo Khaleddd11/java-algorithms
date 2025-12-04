@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class CountWord{
+
      public int countOccurrences(String sentence,String wordToCount){
       
       
@@ -31,4 +32,13 @@ public class CountWord{
         return count;
 
     }
+}
+
+//how to create an immutble class in java
+class Bar{
+
+    int x;
+    int y;
+    int z;
+
 }

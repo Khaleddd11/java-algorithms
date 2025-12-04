@@ -14,10 +14,10 @@ public class Main {
         String delimiterWord = sc.nextLine();
 
         // Replace the delimiter word with a single character (e.g., '|')
-        String modifiedSentence = sentence.replace(delimiterWord, "|");
+        //tring modifiedSentence = sentence.replace(delimiterWord, "|");
 
         // Create a StringTokenizer to split the sentence using '|' as the delimiter
-        StringTokenizer st = new StringTokenizer(modifiedSentence, "|");
+        StringTokenizer st = new StringTokenizer(sentence, delimiterWord);
 
         System.out.println("Tokens are:");
         // Loop through all tokens in the StringTokenizer

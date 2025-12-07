@@ -8,6 +8,7 @@ public class Main {
         double temp1 = 0.0;
         double temp2 = 25.0;
         double temp3 = 100.0;
+        
 
         System.out.println(temp1 + "°C = " + converter.apply(temp1) + "°F");
         System.out.println(temp2 + "°C = " + converter.apply(temp2) + "°F");

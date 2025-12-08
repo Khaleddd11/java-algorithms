@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[]args){
         Function<Double,Double> converter = new TempConvert();
 
+
         
         double temp1 = 0.0;
         double temp2 = 25.0;

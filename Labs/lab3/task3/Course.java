@@ -1,7 +1,7 @@
 public class Course{
-    int courseId;
-    String courseName;
-    int creditHours;
+    private Integer courseId;
+    private String courseName;
+    private Integer creditHours;
 
 Course(int courseId, String courseName, int creditHours){
         this.courseId=courseId;
@@ -10,13 +10,13 @@ Course(int courseId, String courseName, int creditHours){
     }
 
 
-    Course getCourseId(){
+    Integer getCourseId(){
         return courseId;
     }
-    Course getCourseName(){
+    String getCourseName(){
         return courseName;
     }
-    Course getCreditHours(){
+    Integer getCreditHours(){
         return creditHours;
     }
 

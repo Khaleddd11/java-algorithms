@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Student implements RegistrationActions{
@@ -11,20 +10,20 @@ public class Student implements RegistrationActions{
         this.fullName=fullName;
         this.registrations = new ArrayList<>();
     }
-
-    void registerCourse(Course course, Double grade){
+    @Override
+    public void registerCourse(Course course, Double grade){
         registrations.add(new CourseRegistration(course,grade));
     }
     
-    String printReport(){
+    public void printReport(){
         StringBuilder sb = new StringBuilder("");
         for (int i =0 ;i<registrations.size();i++){
 
-            sb.append("the course is" +registrations.get(i).course + 
-            "and the grade is" + registrations.get(i).grade + "\n");
+            sb.append("the course is; " +registrations.get(i).course.getCourseName() + 
+            "and the grade is: " + registrations.get(i).grade + "\n");
             
     }
-    return sb.toString();
+    System.out.println(sb.toString());
         }
     int getStudentId(){
         return studentId;
@@ -32,6 +31,11 @@ public class Student implements RegistrationActions{
     String getName(){
         return fullName;
     }
+    ArrayList<CourseRegistration> getRegistrations() {
+       return registrations;
+
+    }
+
     
 
     public class CourseRegistration{
@@ -42,6 +46,11 @@ public class Student implements RegistrationActions{
             this.course= course;
             this.grade=grade;
         }
+        Course getCourse(){
+            return course;
+        }
+        Double getGrade(){
+            return grade;
     }
-    
+}
 }

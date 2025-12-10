@@ -36,3 +36,5 @@ class StringChecker {
         System.out.println(test6 + "' contains only alphabets: " + containsOnlyAlphabets(test6));
     }
 }
+
+

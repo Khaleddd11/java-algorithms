@@ -1,4 +1,5 @@
 // Generic class for Complex Numbers
+//number is absatrct class for all  numeric wrapper classes
 class ComplexNumber<T extends Number> {
     private T real;
     private T imaginary;

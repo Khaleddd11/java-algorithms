@@ -152,6 +152,9 @@ public class Main {
                     System.out.println("\n--- CLIENT MANAGEMENT ---");
                     System.out.println("1. Add Client");
                     System.out.println("2. Display Clients");
+                     System.out.println("3. Update Clients");
+                      System.out.println("4. Search For a Client");
+                      System.out.println("5. Delete Clients");
                     System.out.println("0. BACK to Main Menu");
                     System.out.print("Enter choice: ");
                     
@@ -164,11 +167,63 @@ public class Main {
 
                     switch(clientChoice) {
                         case 1:
-                            System.out.println("Add Client logic goes here...");
+                             System.out.print("Enter Client ID: ");
+                             int id = sc.nextInt();
+                             sc.nextLine(); 
+                             System.out.print("Enter Client Name: ");
+                             String name = sc.nextLine();
+                             if (name.isEmpty()){
+                                System.out.println("Name cannot be empty.");
+                                continue;
+                             }
+                              if (!name.matches("[a-zA-Z ]+")) {
+                                System.out.println("Name must contain letters only!");
+                                continue;
+                                 }
+                             System.out.print("Enter Client Email: ");
+                             String email = sc.nextLine();
+                             
+                             library.addClient(id, name, email);
+                             System.out.println("Client added successfully.");
                             break;
                         case 2:
-                            System.out.println("Display Clients logic goes here...");
+                            library.displayClients();
                             break;
+                        case 3:
+                            System.out.print("Enter Client ID to update: ");
+                            int updateId = sc.nextInt();
+                            sc.nextLine();
+                            Client clientToUpdate = library.retrieveClient(updateId);  
+                            if (clientToUpdate == null) {
+                             // 2. If null, stop right here. Don't ask for name/email.
+                             System.out.println("Error: Client with ID " + updateId + " not found.");
+                              }  
+                            else{       
+                            System.out.print("Enter NEW Name: ");
+                            String newName = sc.nextLine();
+                            System.out.print("Enter NEW Email: ");
+                            String newEmail = sc.nextLine();
+                            library.updateClient(updateId, newName, newEmail);
+                            break;
+                            }
+                            case 4: 
+                            System.out.println("enter the id of the client");
+                            int clientId =sc.nextInt();
+                            sc.nextLine();
+                            Client foundClient =library.retrieveClient(clientId);
+
+                            if(foundClient != null){
+                                System.out.println("Client Found: ");
+                                System.out.println("Name: " + foundClient.getName());
+                                System.out.println("Email: " + foundClient.getEmail());
+                            }
+                            else{
+                                System.out.println("Error: Client with ID " + clientId + " not found.");
+                            }
+                            break;
+
+                            
+
                     }
                 }
             }

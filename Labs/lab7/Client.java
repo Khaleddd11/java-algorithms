@@ -20,7 +20,15 @@ public class Client{
     public String getName(){
         return this.name;
     }
+    public void setEmail(String email){
+        this.email=email;
+    }
+    public String getEmail(){
+        return this.email;
+    }
     public void getClientDetails(){
         System.out.println("Client id: " + id + " Name: " + name + " Email: " + email);
     }
+ 
+    
 }

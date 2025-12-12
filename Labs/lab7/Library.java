@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 
@@ -12,6 +14,10 @@ public class Library <T extends LibraryItem> {
     }
 
     public void addItem(T lib){
+        if (lib == null) {
+        System.out.println("Error: Cannot add a null item.");
+        return;
+    }
         for(int i = 0; i < items.size(); i++){
             if(items.get(i).id == lib.id){
                 System.out.println("item already is here!");
@@ -37,7 +43,8 @@ public class Library <T extends LibraryItem> {
         System.out.println("The list of all items in the librray: ");
         System.out.println("-------------------------------");
         for(LibraryItem item :items){
-            System.out.println("the item id is: " + item.id +" "+ "AND the item's name is " +" " +item.title);
+            System.out.println("the item id is: " + item.id +" "+ "AND the item's name is " +" " +item.title +
+             " " + "And The item Borrowed Status is: " + item.isBorrowed);
         }
        
         
@@ -70,6 +77,13 @@ public class Library <T extends LibraryItem> {
             }
 
         }
+        //email check
+        for (Client client: clients){
+        if (client.getEmail().equalsIgnoreCase(email)){
+            System.out.println("Error: This email is already registered.");
+            return;
+        }
+    }
         clients.add(new Client(id,name,email));
         return ;
     }
@@ -107,5 +121,54 @@ public class Library <T extends LibraryItem> {
         }
         System.out.println("Client with ID " + id + " not found.");
         
+    }
+    public void borrowItem(LibraryItem itemToBorrow, Client clientBorrowing) {
+    if (itemToBorrow.isBorrowed) {
+        System.out.println("Item is already borrowed.");
+        return;
+    }
+    clientBorrowing.addBorrowedItem(itemToBorrow);
+    itemToBorrow.isBorrowed = true;
+    System.out.println("Item borrowed successfully.");
+}
+
+    public void returnItem(LibraryItem itemToReturn,Client clientReturning){
+        if (!itemToReturn.isBorrowed) {
+        System.out.println("Error: Item '" + itemToReturn.title + "' was not borrowed.");
+        return;
+    }
+        clientReturning.removeBorrowedItem(itemToReturn);
+        itemToReturn.isBorrowed=false;
+        System.out.println("Item returned successfully.");
+    }
+
+    //STREAM METHODS:
+    public T findItemStream(int id) throws ItemNotFoundException {
+        //  Filter by ID then Find first result then Or Throw Exception
+        return items.stream()
+                .filter(item -> item.id == id)
+                .findFirst()
+                .orElseThrow(() -> new ItemNotFoundException("Id not found error thrown (Stream version)"));
+    }
+
+    // Client Management (Stream) 
+    public Client findClientByIdStream(int id) {
+        return clients.stream()
+                .filter(client -> client.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    //Filter library items
+    public List<T> filterItemsByTitleStream(String titleKeyword) {
+        return items.stream()
+                .filter(item -> item.title.toLowerCase().contains(titleKeyword.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    //Filtering items to see only available ones
+    public List<T> getAvailableItemsStream() {
+        return items.stream()
+                .filter(item -> !item.isBorrowed)
+                .collect(Collectors.toList());
     }
 }

@@ -1,3 +1,5 @@
+package lab8.task2;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 

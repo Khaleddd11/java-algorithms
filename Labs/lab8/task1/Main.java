@@ -1,3 +1,5 @@
+package lab8.task1;
+
 import java.awt.*;
 import java.util.*;
 import javax.swing.JFrame;

@@ -1,3 +1,5 @@
+package lab8.task3;
+
 import java.awt.*;
 import java.util.Random;
 import javax.swing.*;

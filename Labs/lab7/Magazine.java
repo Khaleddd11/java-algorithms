@@ -8,6 +8,11 @@ public class Magazine extends LibraryItem{
     public void setIssueNumber(int issueNumber){
         this.issueNumber=issueNumber;
     }   
+
+     public int getIssueNumber(){
+            return issueNumber;
+        }
+        
     public String getItemDetails(){
         String result= "the magazine id is: " + id + "and the title is: "
 + title ;

@@ -84,6 +84,11 @@ public class Main {
                                 System.out.print("Enter the item's ID: ");
                                 int itemId = sc.nextInt();
                                 LibraryItem foundItem = library.retrieveItem(itemId);
+                                if (foundItem instanceof Book)
+                                    System.out.println("Item Found: " + foundItem.title + " (Author: " + ((Book)foundItem).getAuthor() + ")");
+                                else if (foundItem instanceof Magazine)
+                                    System.out.println("Item Found: " + foundItem.title + " (Issue Number: " + ((Magazine)foundItem).getIssueNumber() + ")");
+                                else
                                 System.out.println("Item Found: " + foundItem.title + " (ID: " + foundItem.id + ")");
                             } catch(ItemNotFoundException e){
                                 System.out.println(e.getMessage());
@@ -221,6 +226,17 @@ public class Main {
                                 System.out.println("Error: Client with ID " + clientId + " not found.");
                             }
                             break;
+                            case 5:
+                            System.out.println("enter the id of the client that you want to delete");
+                            int cId =sc.nextInt();
+                            sc.nextLine();
+                            Client foundClient2 = library.retrieveClient(cId);
+                            if(foundClient2 != null){
+                                library.deleteClient(cId);
+                            }
+                            else{
+                                System.out.println("Error: Client with ID " + cId + " not found.");
+                            }
 
                             
 

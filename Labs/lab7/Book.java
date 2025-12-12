@@ -9,6 +9,8 @@ private String author;
 public void setAuthor(String author){
     this.author=author;
 }
+public String getAuthor(){
+    return author;  }
 
     public String getItemDetails(){
         String result= "the Book id is: " + id + "and the title is: "

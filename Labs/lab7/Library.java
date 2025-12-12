@@ -97,4 +97,15 @@ public class Library <T extends LibraryItem> {
 
 
     }
+    public void deleteClient( int id){
+        for (Client client: clients){
+            if(client.getId() == id){
+                clients.remove(client);
+                System.out.println("Client with ID " + id + " has been deleted.");
+                return;
+            }
+        }
+        System.out.println("Client with ID " + id + " not found.");
+        
+    }
 }
